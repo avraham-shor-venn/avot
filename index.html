@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            direction: rtl;
+            background-color: aqua;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .num {
+            color: red;
+            font-size: 35rem; /* Reduced size for better display */
+            text-align: center;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            background-color: #ff5733;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #c70039;
+        }
+    </style>
+    <title>אבות ובנים</title>
+</head>
+<body>
+    <div class="num" id="num"></div>
+    <div id="nums"></div>
+    <button class="btn" onclick="selectWinners()">התחל הגרלה</button>
+</body>
+<script>
+    const winNumbers = [];
+    const max = prompt('הכנס מספר המשתתפים');
+
+    function selectWinners() {
+        let num = document.getElementById('num');
+        let i = 0;
+        const intervalId = setInterval(() => {
+            const number = Math.floor(Math.random() * max) +1;
+            if (!winNumbers.includes(number)) {
+                num.innerHTML = number; 
+            }
+            i++;
+            if (i > 30) {
+                winNumbers.push(number);
+                clearInterval(intervalId);
+                document.getElementById('nums').innerHTML = winNumbers.join(', ');
+            }
+        }, 50);
+    }
+</script>
+</html>
