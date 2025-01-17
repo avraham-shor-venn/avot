@@ -22,6 +22,7 @@
         .num-blue {
             color: rgb(31, 31, 136);
             font-weight: bold;
+            text-shadow: 3px 13px 5px white;
         }
         .btn {
             margin-top: 20px;
@@ -48,6 +49,10 @@
     const winNumbers = [];
     const max = prompt('הכנס מספר המשתתפים');
     let num = document.getElementById('num');
+    const body = document.querySelector('body');
+    const colors = ['gold', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink', 'brown', 'black', 'gray',        "#FF6633",
+       "#FFB399", "#FF33FF","#FFFF99", "#00B3E6", "#E6B333", "#3366E6", "#999966", "#809980", "#E6FF80",
+       "#1AFF33", "#999933", "#FF3380",  "#CCCC00", "#66E64D", "#4D80CC", "#FF4D4D", "#99E6E6", "#6666FF"];
 
     function selectWinners() {
         num.classList.remove('num-blue');
@@ -62,6 +67,7 @@
                 winNumbers.push(number);
                 clearInterval(intervalId);
                 num.classList.add('num-blue');
+                body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 document.getElementById('nums').innerHTML = winNumbers.join(', ');
             }
         }, 50);
