@@ -53,7 +53,7 @@
                 num.innerHTML = number; 
             }
             i++;
-            if (i > 30) {
+            if (i > 38 && !winNumbers.includes(number)) {
                 winNumbers.push(number);
                 clearInterval(intervalId);
                 document.getElementById('nums').innerHTML = winNumbers.join(', ');
