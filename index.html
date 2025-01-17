@@ -19,6 +19,10 @@
             font-size: 20rem; /* Reduced size for better display */
             text-align: center;
         }
+        .num-blue {
+            color: rgb(31, 31, 136);
+            font-weight: bold;
+        }
         .btn {
             margin-top: 20px;
             padding: 10px 20px;
@@ -43,9 +47,10 @@
 <script>
     const winNumbers = [];
     const max = prompt('הכנס מספר המשתתפים');
+    let num = document.getElementById('num');
 
     function selectWinners() {
-        let num = document.getElementById('num');
+        num.classList.remove('num-blue');
         let i = 0;
         const intervalId = setInterval(() => {
             const number = Math.floor(Math.random() * max) +1;
@@ -56,6 +61,7 @@
             if (i > 38 && !winNumbers.includes(number)) {
                 winNumbers.push(number);
                 clearInterval(intervalId);
+                num.classList.add('num-blue');
                 document.getElementById('nums').innerHTML = winNumbers.join(', ');
             }
         }, 50);
